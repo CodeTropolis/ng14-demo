@@ -1,1 +1,6 @@
-<p>users works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput [formControl]="username" />
+</mat-form-field>
+
+{{username.value}}
