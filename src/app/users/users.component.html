@@ -1,6 +1,22 @@
-<mat-form-field appearance="fill">
-    <mat-label>Username</mat-label>
-    <input matInput [formControl]="username" />
-</mat-form-field>
-
-{{username.value}}
+<div class="container">
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" />
+        </mat-form-field>
+        <pre>{{form.value | json}}</pre>
+    </form>
+    <button (click)="patchForm()">Patch Form</button>
+</div>

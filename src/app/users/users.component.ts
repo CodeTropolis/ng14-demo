@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,8 +21,24 @@ export class UsersComponent implements OnInit {
     age: FormControl<number>,
   }>;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.nonNullable.group({
+      username: this.fb.nonNullable.control('mdm115'),
+      firstName: this.fb.nonNullable.control('David'),
+      lastName: this.fb.nonNullable.control('Webb'),
+      age: this.fb.nonNullable.control(23),
+    });
+   }
 
   ngOnInit(): void {}
+
+  patchForm() {
+    this.form.patchValue({
+      age:999,
+      firstName: "Michael",
+      lastName: "West",
+      username: 'mWest997'
+    })
+  }
 
 }
